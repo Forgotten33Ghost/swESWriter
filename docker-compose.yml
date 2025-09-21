@@ -1,0 +1,13 @@
+services:
+  es-writer:
+    build: .
+    container_name: es-writer
+    env_file:
+      - .env
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
+    # на всякий — явно фиксируем единственную реплику (compose всё равно поднимет одну)
+    deploy:
+      replicas: 1
