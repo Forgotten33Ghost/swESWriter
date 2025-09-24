@@ -1,2 +1,2 @@
 Celery
-elasticsearch
+elasticsearch>=8.13,<9
