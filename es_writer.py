@@ -5,8 +5,8 @@ from elasticsearch import Elasticsearch, helpers
 
 WAY_ALIAS = "way"
 
-ES_URL = getenv("ES_URL")
-ES_CLIENT = Elasticsearch(ES_URL)
+ES_HOST = getenv("ES_URL")
+ES_CLIENT = Elasticsearch(hosts=ES_HOST)
 
 def index_docs_to_way(docs: List[Dict[str, Any]], *, chunk_size: int = 2000, refresh: str = "false") -> Dict[str, Any]:
     """Пишем список JSON-объектов в alias 'way'. _id не задаём — ES сам генерит."""
